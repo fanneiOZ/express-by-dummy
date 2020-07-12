@@ -1,5 +1,5 @@
 import {Express} from "express";
-import express = require('express')
+import * as express from 'express'
 import {Route} from "../../common/route";
 import {AbstractListener} from "./abstract-listener";
 

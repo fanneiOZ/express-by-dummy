@@ -132,3 +132,4 @@ $RECYCLE.BIN/
 .idea/misc.xml
 .idea/modules.xml
 
+dist/

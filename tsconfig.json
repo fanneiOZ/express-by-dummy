@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2019",
-    "sourceMap": true,
+    "target": "ES2019",
     "experimentalDecorators": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "outDir": "dist/",
+    "alwaysStrict": true
   },
   "exclude": [
     "node_modules"

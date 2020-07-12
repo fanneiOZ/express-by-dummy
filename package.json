@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:dev": "tsmon src/index.ts"
+    "prestart": "rm -R dist/* && tsc --project tsconfig.json",
+    "start": "HTTP_PORT=8080 node dist/index.js"
   },
   "dependencies": {
     "express": "^4.17.1"

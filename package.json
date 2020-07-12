@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start:dev": "tsmon src/index.ts"
+  },
   "dependencies": {
-    "express": "^4.17.1",
-    "typescript": "^3.9.6"
+    "express": "^4.17.1"
   },
   "devDependencies": {
+    "typescript": "^3.9.6",
     "@types/express": "^4.17.7",
-    "@types/node": "^14.0.22"
+    "@types/node": "^14.0.22",
+    "tsmon": "^0.6.4"
   }
 }

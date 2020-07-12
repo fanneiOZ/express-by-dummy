@@ -7,6 +7,9 @@ export class ExpressListener extends AbstractListener<Express> {
     constructor(port: number) {
         super(port)
         this.setInstance(express())
+        this.getInstance().set('','')
+        this.getInstance().use(express.json())
+        this.getInstance().use(express.urlencoded({ extended: true }))
     }
 
     addRoutes(routes: Route[]): this {

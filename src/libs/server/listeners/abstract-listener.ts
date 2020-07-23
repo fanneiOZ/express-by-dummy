@@ -3,9 +3,10 @@ import {Route} from "../../common/route";
 export abstract class AbstractListener<T> {
     protected app: T;
 
-    protected constructor (
+    protected constructor(
         public readonly port: number
-    ) {}
+    ) {
+    }
 
     protected setInstance(app: T): AbstractListener<T> {
         if (!this.app) {

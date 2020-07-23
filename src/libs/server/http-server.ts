@@ -27,5 +27,18 @@ export class HttpServer {
         this.server.listen(this.listener.port, () => {
             console.log(`Start listening on ${this.listener.port}`)
         })
+
+        this.server.on('connection', () => {
+            console.log('connected')
+            this.server.emit('close')
+        })
+
+        this.server.on('close', () => {
+            console.log('closed')
+        })
+
+        this.server.on('error', (err) => {
+            console.log(err)
+        })
     }
 }

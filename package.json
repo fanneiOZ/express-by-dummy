@@ -1,19 +1,25 @@
 {
   "name": "express",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "prestart": "rm -R dist/* && tsc --project tsconfig.json",
     "start": "HTTP_PORT=8080 node dist/index.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.3.0"
   },
   "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
     "typescript": "^3.9.6",
     "@types/express": "^4.17.7",
     "@types/node": "^14.0.22",
-    "tsmon": "^0.6.4"
+    "@types/jest": "^26.0.4",
+    "tsmon": "^0.6.4",
+    "jest": "^26.1.0"
   }
 }

@@ -1,44 +1,33 @@
-import {createServer, Server} from 'http';
-import {AbstractListener} from "./listeners/abstract-listener";
+import { createServer, Server } from "http";
+import { AbstractListener } from "./listeners/abstract-listener";
 
 export class HttpServer {
-    protected static instance: HttpServer
-    protected server: Server
+  protected static instance: HttpServer;
+  protected server: Server;
 
-    private constructor(
-        protected listener: AbstractListener<unknown>
-    ) {
-        this.server = createServer(listener.getInstance())
+  private constructor(protected listener: AbstractListener<unknown>) {
+    this.server = createServer(listener.getInstance());
+  }
+
+  static create<T>(listener: AbstractListener<T>): HttpServer {
+    if (!listener) {
+      return;
     }
 
-    static create<T>(listener: AbstractListener<T>): HttpServer {
-        if (!listener) {
-            return
-        }
-
-        if (!this.instance) {
-            this.instance = new HttpServer(listener)
-        }
-
-        return this.instance
+    if (!this.instance) {
+      this.instance = new HttpServer(listener);
     }
 
-    start(): void {
-        this.server.listen(this.listener.port, () => {
-            console.log(`Start listening on ${this.listener.port}`)
-        })
+    return this.instance;
+  }
 
-        this.server.on('connection', () => {
-            console.log('connected')
-            this.server.emit('close')
-        })
+  start(): void {
+    this.server.listen(this.listener.port, () => {
+      console.log(`Start listening on ${this.listener.port}`);
+    });
 
-        this.server.on('close', () => {
-            console.log('closed')
-        })
-
-        this.server.on('error', (err) => {
-            console.log(err)
-        })
-    }
+    this.server.on("connection", () => {
+      this.server.emit("close");
+    });
+  }
 }

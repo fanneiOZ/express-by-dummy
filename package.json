@@ -4,9 +4,9 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "clean": "rm -R dist/*",
+    "clean": "rm -Rf dist/*",
     "compile": "tsc --project tsconfig.json",
-    "prestart": "yarn run clean && yarn run com",
+    "prestart": "yarn run clean && yarn run compile",
     "start": "HTTP_PORT=8080 node dist/index.js"
   },
   "dependencies": {

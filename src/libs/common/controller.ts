@@ -3,8 +3,11 @@ import { HttpException } from "./http-exception";
 
 export abstract class Controller {
   protected resBody: unknown;
+
   protected params: Map<string, string>;
+
   private headers: Map<string, string>;
+
   private status: number;
 
   protected setHeader(key: string, value: string): void {
@@ -18,7 +21,7 @@ export abstract class Controller {
   async handle<T extends Request, K extends Response>(
     req: T,
     res: K,
-    next: NextFunction
+    next?: NextFunction
   ): Promise<void> {
     if (this.headers === undefined) {
       this.headers = new Map();
@@ -44,7 +47,6 @@ export abstract class Controller {
 
       res.status(exception.errorCode);
       this.resBody = { error: exception.name, msg: e.message };
-      console.error(e);
     } finally {
       res.send(this.resBody ?? undefined);
     }
